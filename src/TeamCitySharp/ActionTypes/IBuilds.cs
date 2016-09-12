@@ -5,33 +5,34 @@ using TeamCitySharp.Locators;
 
 namespace TeamCitySharp.ActionTypes
 {
-  public interface IBuilds
-  {
-    IBuilds GetFields(string fields);
-    List<Build> SuccessfulBuildsByBuildConfigId(string buildConfigId);
-    List<Build> SuccessfulBuildsByBuildConfigId(string buildConfigId, List<String> param);
-    Build LastSuccessfulBuildByBuildConfigId(string buildConfigId);
-    List<Build> FailedBuildsByBuildConfigId(string buildConfigId);
-    Build LastFailedBuildByBuildConfigId(string buildConfigId);
-    Build LastBuildByBuildConfigId(string buildConfigId);
-    List<Build> ErrorBuildsByBuildConfigId(string buildConfigId);
-    Build LastErrorBuildByBuildConfigId(string buildConfigId);
-    Build ById(string id);
-    List<Build> ByBuildConfigId(string buildConfigId);
-    List<Build> RunningByBuildConfigId(string buildConfigId);
-    List<Build> ByBuildConfigId(string buildConfigId, List<String> param);
-    List<Build> ByBuildLocator(IBuildLocator locator, List<String> param);
-    List<Build> ByConfigIdAndTag(string buildConfigId, string tag);
-    List<Build> ByUserName(string userName);
-    List<Build> ByBuildLocator(IBuildLocator locator);
-    List<Build> AllSinceDate(DateTime date);
-    List<Build> AllBuildsOfStatusSinceDate(DateTime date, BuildStatus buildStatus);
-    List<Build> NonSuccessfulBuildsForUser(string userName);
-    List<Build> ByBranch(string branchName);
-    Build LastBuildByAgent(string agentName);
-    void Add2QueueBuildByBuildConfigId(string buildConfigId);
-    List<Build> AllRunningBuild();
-    List<Build> RetrieveEntireBuildChainFrom(string buildConfigId);
-    List<Build> RetrieveEntireBuildChainTo(string buildConfigId);
-  }
+    public interface IBuilds
+    {
+        IBuilds GetFields(string fields);
+        List<Build> SuccessfulBuildsByBuildConfigId(string buildConfigId);
+        List<Build> SuccessfulBuildsByBuildConfigId(string buildConfigId, List<String> param);
+        Build LastSuccessfulBuildByBuildConfigId(string buildConfigId);
+        List<Build> FailedBuildsByBuildConfigId(string buildConfigId);
+        Build LastFailedBuildByBuildConfigId(string buildConfigId);
+        Build LastBuildByBuildConfigId(string buildConfigId);
+        List<Build> ErrorBuildsByBuildConfigId(string buildConfigId);
+        Build LastErrorBuildByBuildConfigId(string buildConfigId);
+        Build ById(string id);
+        List<Build> ByBuildConfigId(string buildConfigId);
+        List<Build> RunningByBuildConfigId(string buildConfigId);
+        List<Build> ByBuildConfigId(string buildConfigId, List<String> param);
+        List<Build> ByBuildLocator(IBuildLocator locator, List<String> param);
+        List<Build> ByConfigIdAndTag(string buildConfigId, string tag);
+        List<Build> ByUserName(string userName);
+        List<Build> ByBuildLocator(IBuildLocator locator);
+        List<Build> AllSinceDate(DateTime date);
+        List<Build> AllBuildsOfStatusSinceDate(DateTime date, BuildStatus buildStatus);
+        List<Build> NonSuccessfulBuildsForUser(string userName);
+        List<Build> ByBranch(string branchName);
+        Build LastBuildByAgent(string agentName);
+        void Add2QueueBuildByBuildConfigId(string buildConfigId);
+        List<Build> AllRunningBuild();
+        List<Build> RetrieveEntireBuildChainFrom(string buildConfigId);
+        List<Build> RetrieveEntireBuildChainTo(string buildConfigId);
+        Build TriggerBuild(string buildConfigId, string comment, string branchName, IEnumerable<Property> properties, int? agentId, bool? personal);
+    }
 }
