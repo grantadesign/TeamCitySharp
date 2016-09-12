@@ -243,8 +243,8 @@ namespace TeamCitySharp.ActionTypes
             //    </properties>
             //</build>
 
-            var personalXml = personal == null ? "" : String.Format("personal='{0}'", personal.Value.ToString().ToLower());
-            var branchXml = string.IsNullOrEmpty(branchName) ? "" : String.Format("branchName='{0}'", branchName);
+            var personalXml = personal == null ? "" : String.Format(" personal='{0}'", personal.Value.ToString().ToLower());
+            var branchXml = string.IsNullOrEmpty(branchName) ? "" : String.Format(" branchName='{0}'", branchName);
             var buildTypeXml = string.Format("<buildType id='{0}'/>", buildConfigId);
             var agentXml = agentId == null ? "" : string.Format("<agent id='{0}'/>", agentId);
             var commentXml = string.IsNullOrEmpty(comment) ? "" : string.Format("<comment><text>{0}</text></comment>", comment);
