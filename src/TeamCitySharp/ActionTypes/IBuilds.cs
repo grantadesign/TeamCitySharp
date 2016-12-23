@@ -34,5 +34,6 @@ namespace TeamCitySharp.ActionTypes
         List<Build> RetrieveEntireBuildChainFrom(string buildConfigId);
         List<Build> RetrieveEntireBuildChainTo(string buildConfigId);
         Build TriggerBuild(string buildConfigId, string comment, string branchName, IEnumerable<Property> properties, int? agentId, bool? personal);
+        Properties GetResultingProperties(string id);
     }
 }

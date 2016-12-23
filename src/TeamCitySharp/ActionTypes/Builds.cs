@@ -269,5 +269,11 @@ namespace TeamCitySharp.ActionTypes
 
             return _caller.Post<Build>(xmlData, HttpContentTypes.ApplicationXml, "/app/rest/buildQueue", HttpContentTypes.ApplicationJson);
         }
+
+        public Properties GetResultingProperties(string id)
+        {
+            var properties = _caller.GetFormat<Properties>(ActionHelper.CreateFieldUrl("/app/rest/builds/id:{0}/resulting-properties", _fields), id);
+            return properties;
+        }
     }
 }
