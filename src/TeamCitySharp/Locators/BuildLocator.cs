@@ -29,8 +29,9 @@ namespace TeamCitySharp.Locators
                                               bool? running = null,
                                               bool? pinned = null,
                                               int? maxResults = null,
-                                              DateTime? beforeDate = null,
-                                              DateTime? afterDate = null,
+                                              int? lookupLimit = null,
+                                              DateTime? finishBeforeDate = null,
+                                              DateTime? finishAfterDate = null,
                                               int? startIndex = null,
                                               BuildLocator sinceBuild = null,
                                               DateTime? sinceDate = null,
@@ -49,8 +50,9 @@ namespace TeamCitySharp.Locators
           Running = running,
           Pinned = pinned,
           MaxResults = maxResults,
-          BeforeDate = beforeDate,
-          AfterDate = afterDate,
+          LookupLimit = lookupLimit,
+          FinishBeforeDate = finishBeforeDate,
+          FinishAfterDate = finishAfterDate,
           StartIndex = startIndex,
           SinceBuild = sinceBuild,
           SinceDate = sinceDate,
@@ -72,8 +74,9 @@ namespace TeamCitySharp.Locators
     public bool? Running { get; private set; }
     public bool? Pinned { get; private set; }
     public int? MaxResults { get; private set; }
-    public DateTime? BeforeDate { get; private set; }
-    public DateTime? AfterDate { get; private set; }
+    public int? LookupLimit { get; private set; }
+    public DateTime? FinishBeforeDate { get; private set; }
+    public DateTime? FinishAfterDate { get; private set; }
     public int? StartIndex { get; private set; }
     public DateTime? SinceDate { get; private set; }
     public string Branch { get; private set; }
@@ -121,11 +124,14 @@ namespace TeamCitySharp.Locators
       if (MaxResults.HasValue)
         locatorFields.Add("count:" + MaxResults.Value.ToString());
 
-      if (BeforeDate.HasValue)
-        locatorFields.Add("startDate:(date:" + BeforeDate.Value.ToString("yyyyMMdd'T'HHmmsszzzz").Replace(":", "").Replace("+", "-") + ",condition:before)");
+      if (LookupLimit.HasValue)
+        locatorFields.Add("lookupLimit:" + MaxResults.Value.ToString());
 
-      if (AfterDate.HasValue)
-        locatorFields.Add("startDate:(date:" + AfterDate.Value.ToString("yyyyMMdd'T'HHmmsszzzz").Replace(":", "").Replace("+", "-") + ",condition:after)");
+      if (FinishBeforeDate.HasValue)
+        locatorFields.Add("finishDate:(date:" + FinishBeforeDate.Value.ToString("yyyyMMdd'T'HHmmsszzzz").Replace(":", "").Replace("+", "-") + ",condition:before)");
+
+      if (FinishAfterDate.HasValue)
+        locatorFields.Add("finishDate:(date:" + FinishAfterDate.Value.ToString("yyyyMMdd'T'HHmmsszzzz").Replace(":", "").Replace("+", "-") + ",condition:after)");
 
       if (StartIndex.HasValue)
         locatorFields.Add("start:" + StartIndex.Value.ToString());
